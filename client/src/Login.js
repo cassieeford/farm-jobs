@@ -3,8 +3,15 @@ import { useState, useRef } from "react";
 // import { signUp, useAuth, logout, login } from "./Firebase";
 import UserProfile from "./UserProfile";
 import { Link } from "react-router-dom";
+import PostNewAdd from "./PostNewAdd";
 
 function Login(props) {
+  
+  const initialBusState = {
+    email: "",
+    pword: "",
+  };
+
   const [login, setlogin] = useState(true);
   const [loading, setloading] = useState(false); //button becomes disabled when loading is set to true. Stops the user clicking sign up multiple times.
   const [userIsActive, setUserIsActive] = useState(false);
@@ -99,6 +106,7 @@ function Login(props) {
 
   return (
     <div className="Login">
+      {/* <PostNewAdd AddCb={props.AddCb} /> */}
       {/* {userIsActive ? (
         <div>
           <UserProfile currentUser={currentUser} logoutCb={handleLogout} />

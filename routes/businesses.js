@@ -34,6 +34,20 @@ router.get("/advertisements", async function (req, res, next) {
   }
 });
 
+// router.get("/junction", async function (req, res, next) {
+//   let sql =
+//     "SELECT businesses.name, businesses.companytext, businesses.company, businesses.contactname, businesses.contactnum, businesses.contactemail, businesses.streetadd, businesses.town,  businesses.postcode, businesses.companytype, advertisements.id, advertisements.adtype, advertisements.adtitle, advertisements.adfield, advertisements.joblocation, advertisements.wage, advertisements.datelisted, advertisements.adclosingdate, advertisements.contractstartdate, advertisements.contractlength, advertisements.adinfo, advertisements.adfilled FROM businesses, advertisements WHERE advertisements.businessesId=businesses.id";
+
+//   try {
+//     let results = await db(sql);
+//     let junction = results.data;
+//     console.log("junction", junction);
+//     res.send(junction);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 // router.get("/advertisements", async function (req, res, next) {
 //   let sql = "SELECT * FROM advertisements";
 
@@ -70,7 +84,7 @@ router.post("/businesses", async function (req, res, next) {
     companytext,
     email,
     pword,
-    company,
+    companytype,
     contactname,
     contactnum,
     contactemail,
@@ -78,12 +92,12 @@ router.post("/businesses", async function (req, res, next) {
     town,
     postcode,
     ad_id,
-    companytype,
+    listascontractor,
   } = req.body;
 
   let sql = `
-  INSERT INTO businesses (name, companytext, email, pword, company, contactname, contactnum, contactemail, streetadd, town,  postcode, ad_id, companytype)
-  VALUES ('${name}', '${companytext}', '${email}','${pword}','${company}', '${contactname}', '${contactnum}', '${contactemail}', '${streetadd}', '${town}', '${postcode}', ${ad_id}, '${companytype}')`;
+  INSERT INTO businesses (name, companytext, email, pword, companytype, contactname, contactnum, contactemail, streetadd, town,  postcode, ad_id, listascontractor)
+  VALUES ('${name}', '${companytext}', '${email}','${pword}','${companytype}', '${contactname}', '${contactnum}', '${contactemail}', '${streetadd}', '${town}', '${postcode}', ${ad_id}, '${listascontractor}')`;
 
   try {
     await db(sql);
@@ -95,6 +109,74 @@ router.post("/businesses", async function (req, res, next) {
   }
 });
 
+router.post("/advertisements", async (req, res) => {
+  let {
+    businessesId,
+    adtype,
+    adtitle,
+    adfield,
+    joblocation,
+    wage,
+    datelisted,
+    adclosingdate,
+    contractstartdate,
+    contractlength,
+    adinfo,
+    adfilled,
+  } = req.body;
+
+  //statement that inserts info into iems table
+  let sql = `
+  INSERT INTO advertisements (businessesId, adtype, adtitle, adfield, joblocation, wage, datelisted, adclosingdate, contractstartdate,  contractlength, adinfo, adfilled)
+  VALUES ('${businessesId}', '${adtype}', '${adtitle}','${adfield}','${joblocation}', '${wage}', '${datelisted}', '${adclosingdate}', '${contractstartdate}', '${contractlength}', '${adinfo}', '${adfilled}')`;
+
+  try {
+    //update items table
+    await db(sql);
+    //need this to get the item id that was created when updating the items table
+    let adds = await db("SELECT * FROM advertisements");
+    let advertisements = adds.data;
+    if (advertisements.length) {
+      res.send(advertisements);
+    } else {
+      res.status(404).res.send({ error: "Not found" });
+    }
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
+// Post a new Add to the Data Base
+// router.post("/advertisements", async function (req, res, next) {
+//   let {
+//     businessesId,
+//     adtype,
+//     adtitle,
+//     adfield,
+//     joblocation,
+//     wage,
+//     datelisted,
+//     adclosingdate,
+//     contractstartdate,
+//     contractlength,
+//     adinfo,
+//     adfilled,
+//   } = req.body;
+
+//   let sql = `
+//   INSERT INTO advertisements (businessesId, adtype, adtitle, adfield, joblocation, wage, datelisted, adclosingdate, contractstartdate,  contractlength, adinfo, adfilled)
+//   VALUES ('${businessesId}', '${adtype}', '${adtitle}','${adfield}','${joblocation}', '${wage}', '${datelisted}', '${adclosingdate}', '${contractstartdate}', '${contractlength}', ${adinfo}, '${adfilled}')`;
+
+//   try {
+//     await db(sql);
+//     let result = await db("SELECT * FROM advertisements");
+//     let adds = result.data;
+//     res.status(201).send(adds);
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
+
 //edit a business in the database
 router.put("/businesses/:id", async function (req, res, next) {
   let busId = req.params.id;
@@ -103,7 +185,7 @@ router.put("/businesses/:id", async function (req, res, next) {
     companytext,
     email,
     pword,
-    company,
+    companytype,
     contactname,
     contactnum,
     contactemail,
@@ -111,7 +193,7 @@ router.put("/businesses/:id", async function (req, res, next) {
     town,
     postcode,
     ad_id,
-    companytype,
+    listascontractor,
   } = req.body;
 
   try {
@@ -120,7 +202,7 @@ router.put("/businesses/:id", async function (req, res, next) {
       res.status(400).send({ error: "business not Found" });
     } else {
       sql = `UPDATE businesses
-    SET name = '${name}', companytext='${companytext}', email= '${email}', pword='${pword}', company = '${company}', contactname= '${contactname}', contactnum= '${contactnum}', contactemail='${contactemail}', streetadd = '${streetadd}', town='${town}', postcode='${postcode}', ad_id=${ad_id}, companytype='${companytype}'
+    SET name = '${name}', companytext='${companytext}', email= '${email}', pword='${pword}', companytype = '${companytype}', contactname= '${contactname}', contactnum= '${contactnum}', contactemail='${contactemail}', streetadd = '${streetadd}', town='${town}', postcode='${postcode}', ad_id=${ad_id}, listascontractor='${listascontractor}'
     WHERE id = ${busId}`;
       await db(sql);
       let result = await db("SELECT * FROM businesses");

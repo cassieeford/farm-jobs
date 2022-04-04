@@ -28,3 +28,100 @@
   width: 90%;
   margin: auto;
 }
+.navbar-nav {
+  color: white;
+  font-size: 30px;
+  font-family: "Shadows Into Light";
+}
+.home-image {
+  margin: auto;
+  border-radius: 20px;
+  padding: 5px;
+  max-width: 100%;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.home-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+.image-text {
+  position: absolute;
+  text-shadow: -3px -3px 0 grey, 1px -1px 0 grey, -1px 1px 0 grey,
+    1px 1px 0 grey;
+  top: 40%;
+  left: 20%;
+  color: white;
+  font-size: 50px;
+  transform: translate(-50%, -50%);
+  /* font-family: "Shadows Into Light"; */
+  font-family: "Amatic SC";
+}
+.home-cards {
+  padding: 20px;
+  font-family: "Shadows Into Light";
+}
+
+.card-img {
+  opacity: 0.7;
+}
+
+.card-title-home {
+  color: white;
+  margin-top: 40%;
+  font-size: 50px;
+  stroke: 2px;
+  opacity: 1px;
+}
+.mail-list {
+  margin-top: 20px;
+}
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Amatic+SC:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Amatic+SC:wght@700&family=Architects+Daughter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Amatic+SC:wght@700&family=Architects+Daughter&family=Khula:wght@300&display=swap");
+.farm-jobs-header {
+  text-shadow: -2px -2px 0 grey, 1px -1px 0 grey, -1px 1px 0 grey,
+    1px 1px 0 grey;
+  /* margin-left: 10px; */
+  text-align: left;
+  color: white;
+  font-size: 50px;
+  /* font-family: "Shadows Into Light"; */
+  /* font-family: "Amatic SC"; */
+  margin-top: 30px;
+  /* font-family: "Advent Pro", sans-serif; */
+  /* font-family: "Amatic SC", cursive; */
+  /* font-family: 'Advent Pro', sans-serif; */
+  /* font-family: 'Amatic SC', cursive; */
+  /* font-family: "Architects Daughter"; */
+  /* font-family: "Advent Pro", sans-serif; */
+  /* font-family: "Amatic SC", cursive; */
+  /* font-family: "Architects Daughter", cursive; */
+  font-family: "Khula", sans-serif;
+}
+
+.button {
+  color: green;
+  background-color: green;
+}
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #5b784f !important;
+  border-color: green;
+}
+
+h1 {
+  /* font-family: "Shadows Into Light"; */
+  font-family: "Khula", sans-serif;
+  color: "#5b784f";
+}

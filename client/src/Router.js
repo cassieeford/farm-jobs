@@ -6,6 +6,10 @@ import UserProfile from "./UserProfile";
 import Jobs from "./Jobs";
 import Contractors from "./Contractors";
 import Leasing from "./Leasing";
+import SignUp from "./SignUp";
+import ProfileData from "./ProfileData";
+import PostNewAdd from "./PostNewAdd";
+import NewLogin from "./NewLogin";
 
 function Router(props) {
   return (
@@ -21,13 +25,19 @@ function Router(props) {
         <Route
           path="/login"
           element={
-            <Login
+            <NewLogin
               userLoggedIn={props.userLoggedIn}
               userLoggedOut={props.userLoggedOut}
+              BusinessCb={props.BusinessCb}
             />
           }
         />
-        {/* <Route path="/user" element={<UserProfile />} /> */}
+        <Route
+          path="/signup"
+          element={<SignUp BusinessCb={props.BusinessCb} />}
+        />
+        <Route path="/newadd" element={<PostNewAdd AddCb={props.AddCb} />} />
+        <Route path="/userprofile" element={<ProfileData />} />
       </Routes>
     </div>
   );

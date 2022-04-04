@@ -10,7 +10,7 @@ function Map() {
       <div id="map">
         <MapContainer
           className="MapContainer"
-          center={[-37.302092, 144.456268]}
+          center={[-36.947398732708315, 143.9140506060621]}
           zoom={10}
           scrollWheelZoom={true}
         >

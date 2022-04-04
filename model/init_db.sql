@@ -6,7 +6,7 @@ CREATE TABLE businesses (
     companytext VARCHAR(500) NOT NULL,
     email VARCHAR(60) NOT NULL,
     pword VARCHAR(80) NOT NULL,
-    company VARCHAR(60) NOT NULL,
+    companytype VARCHAR(60) NOT NULL,
     contactname VARCHAR(60) NOT NULL,
     contactnum VARCHAR(60) NOT NULL,
     contactemail VARCHAR(60) NOT NULL,
@@ -14,16 +14,16 @@ CREATE TABLE businesses (
     town VARCHAR(60) NOT NULL,
     postcode VARCHAR(10) NOT NULL,
     ad_id int,
-    companytype VARCHAR(60) NOT NULL
+    listascontractor VARCHAR(60) NOT NULL
 );
 
-INSERT into businesses (name, companytext, email,pword,company, contactname, contactnum, contactemail, streetadd, town,  postcode, ad_id, companytype)
+INSERT into businesses (name, companytext, email,pword,companytype, contactname, contactnum, contactemail, streetadd, town,  postcode, ad_id, listascontractor)
 VALUES 
-(   "Bobs Farm", 
+(   "Bobs Legacy Primary Producers", 
     "Bobs Farm is a 5th generation family businesses growing potatos, carrots and peas for over 100 years.",
     "bob@bobsfarm.com",
     "bobbob",
-    "Bobs Legacy Primary Producers",
+    "producer",
     "Bob Bones",
     "0404 414 414",
     "contact@bobsfarm.com",
@@ -31,14 +31,14 @@ VALUES
     "Baringhup",
     "3463", 
     0 ,
-    "producer"
+    "false"
 ),
 (   
-    "Puckles Cropping",
+    "Puckles Harvesting and Cropping",
     "Contract harvest teams with 20 years experience of harvesting wheat, barley and rye crops",
     "Puckles@cropping.com",
     "pucpuc",
-    "Puckles Harvesting and Cropping",
+    "contractor",
     "Jeremy Puckle",
     "0202 212 212",
     "info@pucklescropping.com",
@@ -46,14 +46,14 @@ VALUES
     "Joyces Creek",
     "3364",
     1,
-    "contractor"
+    "true"
 ),
 (   
     "All Day Shearing",
     "Sheep Shearing and Rousabout contracting team servicing Victoria Wide",
     "Alldayshearing@gmail.com",
     "allall",
-    "All Day Sheep Shearing",
+    "contractor",
     "Jonathon Smith",
     "0303 313 313",
     "info@pucklescropping.com",
@@ -61,14 +61,14 @@ VALUES
     "Ravenswood South",
     "3453",
     3,
-    "contractor"
+    "true"
 ),
 (   
     "Pollock and Sons",
     "2nd generation sheep and crop farmers",
     "Pollocks@gmail.com",
     "polpol",
-    "Pollock Sheep and Cropping Farm",
+    "producer",
     "Paul Pollock",
     "0404 414 414",
     "info@pollockfarms.com",
@@ -76,14 +76,14 @@ VALUES
     "Harcourt North",
     "3453",
     1,
-    "producer"
+    "false"
 ),
 (   
     "Jennings Family Farm",
     "7000 acres of cropping land around Baringhup region",
     "jennings@gmail.com",
     "jenjen",
-    "Jennings Family Farm",
+    "producer",
     "Jennifer Jennings",
     "0505 515 515",
     "info@jenningsfarm.com",
@@ -91,7 +91,7 @@ VALUES
     "Baringhup",
     "3463",
     4,
-    "producer"
+    "false"
 )
 ;
 
@@ -116,7 +116,7 @@ VALUES
 ( 
 4,
 "Job",
-"Wool classer, Shearer and rousies wanted for 7,000 sheep",
+"Wool classer, Shearers and rousies wanted for 7,000 sheep",
 "Livestock",
 "Harcourt", 
 "Negotiable",
@@ -142,5 +142,34 @@ VALUES
 "false"
 )
 ;
+-- CREATE TABLE junction (
+--     junctionid int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+--     b_name VARCHAR(40) NOT NULL,
+--     b_companytext VARCHAR(500) NOT NULL,
+--     b_company VARCHAR(500) NOT NULL,
+--     b_contactname VARCHAR(60) NOT NULL,
+--     b_contactnum VARCHAR(60) NOT NULL,
+--     b_contactemail VARCHAR(60) NOT NULL,
+--     b_streetadd VARCHAR(60) NOT NULL,
+--     b_town VARCHAR(60) NOT NULL,
+--     b_postcode VARCHAR(10) NOT NULL,
+--     a_id INT 
+--     a_adtype VARCHAR(10) NOT NULL,
+--     a_adtitle VARCHAR(100) NOT NULL,
+--     a_adfield VARCHAR(40) NOT NULL,
+--     a_joblocation VARCHAR(80) NOT NULL,
+--     a_wage VARCHAR(60),
+--     a_datelisted VARCHAR(40) NOT NULL,
+--     a_adclosingdate VARCHAR(40) NOT NULL,
+--     a_contractstartdate VARCHAR(40) NOT NULL,
+--     a_contractlength VARCHAR(60) NOT NULL,
+--     a_adinfo VARCHAR(500) NOT NULL,
+--     a_adfilled VARCHAR(10) NOT NULL
+--     FOREIGN KEY(itemid) REFERENCES items(itemid),
+--     FOREIGN KEY(sustainabilityid) REFERENCES sustainability(id)
+-- );
+
+--  let sql =
+--     "SELECT businesses.name, businesses.companytext, businesses.company, businesses.contactname, businesses.contactnum, businesses.contactemail, businesses.streetadd, businesses.town,  businesses.postcode, businesses.companytype, advertisements.id, advertisements.adtype, advertisements.adtitle, advertisements.adfield, advertisements.joblocation, advertisements.wage, advertisements.datelisted, advertisements.adclosingdate, advertisements.contractstartdate, advertisements.contractlength, advertisements.adinfo, advertisements.adfilled FROM businesses, advertisements WHERE advertisements.businessesId=businesses.id";
 
 
