@@ -41,7 +41,7 @@ function PostNewAdd(props) {
           {/* <div className="offset-md-2 row mt-10"> */}
           <div className="offset-md-2 col-md-5">
             {/* <div className="form-group"> */}
-            <label for="adtitle">
+            <label htmlFor="adtitle">
               <span>Advertisement Details:</span>
             </label>
             <input
@@ -58,7 +58,7 @@ function PostNewAdd(props) {
           </div>
 
           <div className="col-md-3">
-            <label for="adtype">
+            <label htmlFor="adtype">
               <span>Type of Advertisement</span>
             </label>
             <select
@@ -79,7 +79,7 @@ function PostNewAdd(props) {
         <div className="row mt-10">
           <div className="offset-md-2 col-md-3">
             {/* <div className="form-group"> */}
-            <label for="adfield">
+            <label htmlFor="adfield">
               <span>Advertisement Field</span>
             </label>
             <input
@@ -96,7 +96,7 @@ function PostNewAdd(props) {
 
           <div className="col-md-3">
             {/* <div className="form-group"> */}
-            <label for="joblocation">
+            <label htmlFor="joblocation">
               <span>Location</span>
             </label>
             <input
@@ -112,7 +112,7 @@ function PostNewAdd(props) {
           </div>
           <div className="col-md-2">
             {/* <div className="form-group"> */}
-            <label for="wage">
+            <label htmlFor="wage">
               <span>$$$</span>
             </label>
             <input
@@ -130,7 +130,7 @@ function PostNewAdd(props) {
         <div className="row mt-10">
           <div className="offset-md-2 col-md-2">
             {/* <div className="form-group"> */}
-            <label for="datelisted">
+            <label htmlFor="datelisted">
               <span>Date Listed</span>
             </label>
             <input
@@ -147,7 +147,7 @@ function PostNewAdd(props) {
 
           <div className="col-md-2">
             {/* <div className="form-group"> */}
-            <label for="adclosingdate">
+            <label htmlFor="adclosingdate">
               <span>Add Closing Date</span>
             </label>
             <input
@@ -163,7 +163,7 @@ function PostNewAdd(props) {
           </div>
           <div className="col-md-2">
             {/* <div className="form-group"> */}
-            <label for="contractstartdate">
+            <label htmlFor="contractstartdate">
               <span>Start Date</span>
             </label>
             <input
@@ -179,7 +179,7 @@ function PostNewAdd(props) {
           </div>
           <div className="col-md-2">
             {/* <div className="form-group"> */}
-            <label for="contractlength">
+            <label htmlFor="contractlength">
               <span>Contract Length</span>
             </label>
             <input
@@ -197,7 +197,7 @@ function PostNewAdd(props) {
         <div className="row mt-10">
           <div className="offset-md-2 col-md-8">
             {/* <div className="form-group"> */}
-            <label for="adinfo">
+            <label htmlFor="adinfo">
               <span>Advertisement Details:</span>
             </label>
             <input

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "antd";
-import "antd/dist/antd.css";
+import "antd/dist/antd.less";
 
 const ModalDisplay = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);

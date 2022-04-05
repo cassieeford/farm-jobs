@@ -8,7 +8,7 @@ function Home() {
         {/* <div className="image-text">Farm Jobs</div> */}
       </div>
 
-      <div class="card text-center">
+      <div className="card text-center">
         <div className="home-cards">
           <div className="card-deck mt-3">
             <div className="card bg-light text-white">
@@ -63,30 +63,33 @@ function Home() {
         </div>
       </div>
 
-      <form class="row mt-5 align-items-center">
-        <div class="col-8 align-items-center">
-          <label class="visually-hidden" for="inlineFormInputGroupUsername">
+      <form className="row mt-5 align-items-center">
+        <div className="col-8 align-items-center">
+          <label
+            className="visually-hidden"
+            htmlFor="inlineFormInputGroupUsername"
+          >
             <h3>Join Our Mailing List</h3>
           </label>
-          <div class="input-group">
-            <div class="input-group-text">@</div>
+          <div className="input-group">
+            <div className="input-group-text">@</div>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="inlineFormInputGroupUsername"
               placeholder="Username"
             />
           </div>
         </div>
 
-        <div class="col-12">
-          <label class="visually-hidden" for="inlineFormSelectPref">
+        <div className="col-12">
+          <label className="visually-hidden" htmlFor="inlineFormSelectPref">
             We'll never share your email with anyone else.
           </label>
         </div>
 
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">
+        <div className="col-12">
+          <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </div>

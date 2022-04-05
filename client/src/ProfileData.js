@@ -39,7 +39,7 @@ function ProfileData(props) {
           {/* <div className="offset-md-2 row mt-10"> */}
           <div className="offset-md-2 col-md-5">
             {/* <div className="form-group"> */}
-            <label for="name">
+            <label htmlFor="name">
               <span>Company/Profile Name:</span>
             </label>
             <input
@@ -55,7 +55,7 @@ function ProfileData(props) {
           </div>
           <div className="col-md-3">
             {/* <div className="form-group"> */}
-            <label for="companytype">
+            <label htmlFor="companytype">
               <span>Industry</span>
             </label>
             <input
@@ -72,7 +72,7 @@ function ProfileData(props) {
         </div>
         <div className="row mt-6">
           <div className="offset-md-2 col-md-8">
-            <label for="companytext">
+            <label htmlFor="companytext">
               <span>Company Details or Profile Information:</span>
             </label>
             <input
@@ -92,7 +92,7 @@ function ProfileData(props) {
         <div className="row mt-10">
           <div className="offset-md-2 col-md-5">
             {/* <div className="form-group"> */}
-            <label for="contactname">
+            <label htmlFor="contactname">
               <span>Contact Name</span>
             </label>
             <input
@@ -109,7 +109,7 @@ function ProfileData(props) {
 
           <div className="col-md-3">
             {/* <div className="form-group"> */}
-            <label for="contactnum">
+            <label htmlFor="contactnum">
               <span>Contact Number</span>
             </label>
             <input
@@ -127,7 +127,7 @@ function ProfileData(props) {
         <div className="row mt-10">
           <div className="offset-md-2 col-md-8">
             {/* <div className="form-group"> */}
-            <label for="contactemail">
+            <label htmlFor="contactemail">
               <span>Contact Email</span>
             </label>
             <input
@@ -145,7 +145,7 @@ function ProfileData(props) {
 
         <div className="row mt-10">
           <div className="offset-md-2 col-md-8">
-            <label for="streetadd">
+            <label htmlFor="streetadd">
               <span>Street Address</span>
             </label>
             <input
@@ -163,7 +163,7 @@ function ProfileData(props) {
 
         <div className="row mt-10">
           <div className="offset-md-2 col-md-5">
-            <label for="town">
+            <label htmlFor="town">
               <span>Town</span>
             </label>
             <input
@@ -180,7 +180,7 @@ function ProfileData(props) {
 
           <div className="col-md-3">
             {/* <div className="form-group"> */}
-            <label for="postcode">
+            <label htmlFor="postcode">
               <span>Postcode</span>
             </label>
             <input
@@ -197,7 +197,7 @@ function ProfileData(props) {
         </div>
         <div className="row mt-10">
           <div className="offset-md-2 col-md-8 ">
-            <label for="listascontractor" className="form-inline">
+            <label htmlFor="listascontractor" className="form-inline">
               <span>
                 Are you a contractor and would like to list your profile as an
                 Advertisement{" "}

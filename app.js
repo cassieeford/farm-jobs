@@ -7,6 +7,8 @@ var indexRouter = require("./routes/index");
 // var usersRouter = require("./routes/users");
 var businesses = require("./routes/businesses");
 // var adds = require("./routes/adds");
+var authRouter = require("./routes/auth");
+
 var app = express();
 
 app.use(logger("dev"));
@@ -19,5 +21,6 @@ app.use("/", indexRouter);
 // app.use("/users", usersRouter);
 app.use("/", businesses);
 // app.use("/", adds);
+app.use("/", authRouter);
 
 module.exports = app;

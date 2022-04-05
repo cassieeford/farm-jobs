@@ -2,6 +2,8 @@ import "./App.css";
 import { Link } from "react-router-dom";
 
 function NavBar(props) {
+  // logoutCb;
+
   return (
     <div className="NavBar">
       <div className="pos-f-t">
@@ -26,18 +28,36 @@ function NavBar(props) {
             </div>
 
             <div className="navbar-nav ml-auto">
-              <a className="nav-link active" href="/login">
-                Login
-              </a>
-              <a className="nav-link active" href="/signup">
-                Sign Up
-              </a>
-              <a className="nav-link active" href="/newadd">
-                Post New Add
-              </a>
-              <a className="nav-link active" href="/userprofile">
-                User Profile
-              </a>
+              {props.user ? (
+                <div>
+                  <a className="nav-link active" href="/newadd">
+                    Post New Add
+                  </a>
+                  <a className="nav-link active" href="/userprofile/:id">
+                    User Profile
+                  </a>
+                  <a className="nav-link active" href="/membersonly">
+                    Members Only
+                  </a>
+                  <a
+                    className="nav-link active"
+                    href="/"
+                    onClick={props.logoutCb}
+                  >
+                    Logout
+                  </a>
+                </div>
+              ) : (
+                <div>
+                  {" "}
+                  <a className="nav-link active" href="/login">
+                    Login
+                  </a>
+                  <a className="nav-link active" href="/signup">
+                    Sign Up
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>

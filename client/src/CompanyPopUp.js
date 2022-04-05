@@ -1,5 +1,5 @@
 import "./App.css";
-import ModalDisplay from "./Modal";
+// import ModalDisplay from "./Modal";
 
 function CompanyPopUp(props) {
   let a = props.a;
@@ -14,17 +14,17 @@ function CompanyPopUp(props) {
 
           <h6 className="card-subtitle mb-2 text-muted">{a.adfield}</h6>
 
-          <h7 className="card-subtitle mb-2 text-muted">
+          <h6 className="card-subtitle mb-2 text-muted">
             Contract Length: {a.contractlength}
-          </h7>
+          </h6>
           <br></br>
-          <h7 className="card-subtitle mb-2 text-muted">
+          <h6 className="card-subtitle mb-2 text-muted">
             Ad Closing Date: {a.adclosingdate}
             <hr></hr>
-          </h7>
+          </h6>
           <br></br>
           <p className="card-text">{a.adinfo.substring(0, 100)}...</p>
-          <ModalDisplay a={props.a} businesses={props.businesses} />
+          {/* <ModalDisplay a={props.a} businesses={props.businesses} /> */}
         </div>
       </div>
     </div>

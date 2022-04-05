@@ -14,7 +14,6 @@ router.get("/businesses", async function (req, res, next) {
   try {
     let results = await db(sql);
     let business = results.data;
-    console.log("adds", business);
     res.send(business);
   } catch (err) {
     next(err);
@@ -27,26 +26,11 @@ router.get("/advertisements", async function (req, res, next) {
   try {
     let results = await db(sql);
     let adds = results.data;
-    console.log("adds", adds);
     res.send(adds);
   } catch (err) {
     next(err);
   }
 });
-
-// router.get("/junction", async function (req, res, next) {
-//   let sql =
-//     "SELECT businesses.name, businesses.companytext, businesses.company, businesses.contactname, businesses.contactnum, businesses.contactemail, businesses.streetadd, businesses.town,  businesses.postcode, businesses.companytype, advertisements.id, advertisements.adtype, advertisements.adtitle, advertisements.adfield, advertisements.joblocation, advertisements.wage, advertisements.datelisted, advertisements.adclosingdate, advertisements.contractstartdate, advertisements.contractlength, advertisements.adinfo, advertisements.adfilled FROM businesses, advertisements WHERE advertisements.businessesId=businesses.id";
-
-//   try {
-//     let results = await db(sql);
-//     let junction = results.data;
-//     console.log("junction", junction);
-//     res.send(junction);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
 
 // router.get("/advertisements", async function (req, res, next) {
 //   let sql = "SELECT * FROM advertisements";
@@ -61,53 +45,6 @@ router.get("/advertisements", async function (req, res, next) {
 // });
 
 //GET business by ID
-
-router.get("/businesses/:id", async function (req, res, next) {
-  let busId = req.params.id;
-  try {
-    let results = await db(`SELECT * FROM businesses WHERE id = ${busId}`);
-    let businessSelected = results.data;
-    if (businessSelected.length === 0) {
-      res.status(404).send({ error: "business not found" });
-    } else {
-      res.send(businessSelected[0]);
-    }
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
-
-//Post a new Business to the Data Base
-router.post("/businesses", async function (req, res, next) {
-  let {
-    name,
-    companytext,
-    email,
-    pword,
-    companytype,
-    contactname,
-    contactnum,
-    contactemail,
-    streetadd,
-    town,
-    postcode,
-    ad_id,
-    listascontractor,
-  } = req.body;
-
-  let sql = `
-  INSERT INTO businesses (name, companytext, email, pword, companytype, contactname, contactnum, contactemail, streetadd, town,  postcode, ad_id, listascontractor)
-  VALUES ('${name}', '${companytext}', '${email}','${pword}','${companytype}', '${contactname}', '${contactnum}', '${contactemail}', '${streetadd}', '${town}', '${postcode}', ${ad_id}, '${listascontractor}')`;
-
-  try {
-    await db(sql);
-    let result = await db("SELECT * FROM businesses");
-    let business = result.data;
-    res.status(201).send(business);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
 
 router.post("/advertisements", async (req, res) => {
   let {

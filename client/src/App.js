@@ -1,27 +1,48 @@
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Router from "./Router";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 
-import Api from "./Api";
+import Api from "./Helpers/Api";
+import Local from "./Helpers/Local";
 
 function App() {
-  const [userActive, setUserActive] = useState(false);
+  // const [userActive, setUserActive] = useState(false);
   const [businesses, setBusinesses] = useState([]);
   // const [junctionTable, setJunctionTable] = useState([]);
   const [adds, setAdds] = useState([]);
+  const [user, setUser] = useState(Local.getUser());
+  // const [user, setUser] = useState(Local.getUser());
+  const [loginErrorMsg, setLoginErrorMsg] = useState("");
+
+  let navigate = useNavigate;
 
   useEffect(() => {
     getBusinesses();
     getAdvertisements();
+    console.log("user", user);
     // getJunct();
   }, []);
+
+  async function doLogin(email, pword) {
+    let response = await Api.loginUser(email, pword);
+    // console.log("DATA", response.data.businesses.email);
+    // console.log("email", email, "password", pword);
+    if (response.ok) {
+      Local.saveUserInfo(response.data.token, response.data.businesses);
+      setUser(response.data.businesses);
+      setLoginErrorMsg("");
+      navigate("/membersonly"); //used to navigate between sessions
+    } else {
+      setLoginErrorMsg("Login failed");
+    }
+  }
 
   async function getBusinesses() {
     let response = await Api.getBus();
     if (response.ok) {
-      console.log("businesses", response.data);
       setBusinesses(response.data);
     } else {
       console.log(`Business Error: ${response.error}`);
@@ -30,21 +51,12 @@ function App() {
   async function getAdvertisements() {
     let response = await Api.getAdds();
     if (response.ok) {
-      console.log("adds", response.data);
       setAdds(response.data);
     } else {
       console.log(`Adds Error: ${response.error}`);
     }
   }
 
-  // async function addAdd(newAdd) {
-  //   let response = await Api.addAdvertisement(newAdd);
-  //   if (response.ok) {
-  //     setAdds(response.data);
-  //   } else {
-  //     console.log(`Error: ${response.error}`);
-  //   }
-  // }
   async function addAdd(newAdd) {
     console.log("async function for new add", newAdd);
     let options = {
@@ -85,44 +97,46 @@ function App() {
     }
   }
 
-  // async function getJunct() {
-  //   let response = await Api.getJunction();
-  //   if (response.ok) {
-  //     console.log("junction", response.data);
-  //     setJunctionTable(response.data);
-  //   } else {
-  //     console.log(`Adds Error: ${response.error}`);
-  //   }
+  function doLogout() {
+    Local.removeUserInfo();
+    setUser(null);
+    navigate("/");
+  }
+
+  // function userLoggedIn(user) {
+  //   setUserActive(user);
+  //   console.log("userpasslogin", user);
+  // }
+  // function userLoggedOut(user) {
+  //   setUserActive(user);
+  //   console.log("userpasslogout", user);
   // }
 
-  function userLoggedIn(user) {
-    setUserActive(user);
-    console.log("userpasslogin", user);
-  }
-  function userLoggedOut(user) {
-    setUserActive(user);
-    console.log("userpasslogout", user);
-  }
-
-  console.log("USERACTIVE?", userActive);
   return (
     <div className="App">
       <h5 className="farm-jobs-header">Farm Jobs</h5>
       <BrowserRouter>
-        <Navbar userActive={userActive} />
+        <Navbar
+          // userActive={userActive}
+          user={user}
+          logoutCb={doLogout}
+        />
 
         <Router
           adds={adds}
           businesses={businesses}
-          userLoggedIn={userLoggedIn}
-          userLoggedOut={userLoggedOut}
+          // userLoggedIn={userLoggedIn}
+          // userLoggedOut={userLoggedOut}
           AddCb={addAdd}
           BusinessCb={addBus}
+          loginCb={(u, p) => doLogin(u, p)}
+          loginError={loginErrorMsg}
+          doLoginCb={doLogin}
         />
       </BrowserRouter>
       {/* {businesses} */}
       <div className="row mb-3">
-        <label for="inputEmail3" className="col-sm-2 col-form-label">
+        <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
           Email
         </label>
         <div className="col-sm-10"></div>

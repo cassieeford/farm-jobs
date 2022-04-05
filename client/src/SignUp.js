@@ -41,7 +41,7 @@ function SignUp(props) {
           {/* <div className="offset-md-2 row mt-10"> */}
           <div className="offset-md-4 col-md-4">
             {/* <div className="form-group"> */}
-            <label for="email">
+            <label htmlFor="email">
               <span>User Email:</span>
             </label>
             <input
@@ -60,11 +60,11 @@ function SignUp(props) {
           {/* <div className="offset-md-2 row mt-10"> */}
           <div className="offset-md-4 col-md-4">
             {/* <div className="form-group"> */}
-            <label for="pword">
+            <label htmlFor="pword">
               <span>User Password:</span>
             </label>
             <input
-              type="pword"
+              type="password"
               className="form-control"
               id="pword"
               aria-describedby="pword"

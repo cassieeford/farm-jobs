@@ -1,8 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Login from "./Login";
 import Home from "./Home";
-import UserProfile from "./UserProfile";
 import Jobs from "./Jobs";
 import Contractors from "./Contractors";
 import Leasing from "./Leasing";
@@ -10,6 +8,10 @@ import SignUp from "./SignUp";
 import ProfileData from "./ProfileData";
 import PostNewAdd from "./PostNewAdd";
 import NewLogin from "./NewLogin";
+import AuthenticatedRoute from "./AuthenticationRoute";
+import MembersOnlyView from "./MembersOnlyView";
+import UserProfile from "./UserProfile";
+import ProfileView from "./ProfileView";
 
 function Router(props) {
   return (
@@ -29,6 +31,9 @@ function Router(props) {
               userLoggedIn={props.userLoggedIn}
               userLoggedOut={props.userLoggedOut}
               BusinessCb={props.BusinessCb}
+              loginCb={(u, p) => props.loginCb(u, p)}
+              loginError={props.loginError}
+              doLoginCb={props.doLoginCb}
             />
           }
         />
@@ -36,8 +41,16 @@ function Router(props) {
           path="/signup"
           element={<SignUp BusinessCb={props.BusinessCb} />}
         />
+        {/* <AuthenticatedRoute> */}
+        <Route path="/userprofile/:id" element={<ProfileView />} />
+        {/* </AuthenticatedRoute> */}
+        {/* 
+        <AuthenticatedRoute path="/membersonly" element>
+          <MembersOnlyView />
+        </AuthenticatedRoute> */}
+
         <Route path="/newadd" element={<PostNewAdd AddCb={props.AddCb} />} />
-        <Route path="/userprofile" element={<ProfileData />} />
+        {/* <Route path="/userprofile/:id" element={<ProfileData />} /> */}
       </Routes>
     </div>
   );
