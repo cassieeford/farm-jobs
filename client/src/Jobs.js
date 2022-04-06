@@ -4,10 +4,15 @@ import { useState, Link } from "react";
 import CompanyPopUp from "./CompanyPopUp";
 
 function Jobs(props) {
-  function business(id) {
-    let companies = props.businesses.filter((comp) => comp.id === id);
-    return companies;
-  }
+  // function business(id) {
+  // let companies = props.businesses.filter(
+  //   (comp) => comp.id == props.adds.businessesId
+  // );
+  // console.log(companies);
+  // let fullAdd = props.adds.push(companies);
+  // console.log("fullAdd", fullAdd);
+  //   return companies;
+  // }
 
   return (
     <div className="Job Board">
@@ -24,7 +29,8 @@ function Jobs(props) {
                   <CompanyPopUp
                     key={a.id}
                     a={a}
-                    businesses={business(a.businessesId)}
+                    businesses={props.businesses}
+                    // businesses={business(a.businessesId)}
                   />
                 ))}
               </div>

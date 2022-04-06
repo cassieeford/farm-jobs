@@ -43,11 +43,11 @@ const ModalDisplay = (props) => {
         <p>Contract Length:{add.contractlength}</p>
         <p>Job Details:{add.adinfo}</p>
         <p>Contact:</p>
-        <p>{bus[0].name}</p>
+        {/* <p>{bus[0].name}</p>
         <p>{bus[0].companytext}</p>
         <p>{bus[0].contactname}</p>
         <p>{bus[0].contactnum}</p>
-        <p>{bus[0].contactemail}</p>
+        <p>{bus[0].contactemail}</p> */}
       </Modal>
     </>
   );

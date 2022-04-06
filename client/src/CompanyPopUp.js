@@ -4,6 +4,11 @@ import "./App.css";
 function CompanyPopUp(props) {
   let a = props.a;
   // let bus = props.businesses[0];
+  let bid = a.businessesId;
+  // console.log("bus", props.businesses);
+  let companies = props.businesses.find((comp) => comp.id === bid);
+  console.log("companies", companies);
+
   return (
     <div className="CompanyPopUp">
       <div className="card mb-3" key={a.id}>
@@ -17,13 +22,28 @@ function CompanyPopUp(props) {
           <h6 className="card-subtitle mb-2 text-muted">
             Contract Length: {a.contractlength}
           </h6>
-          <br></br>
           <h6 className="card-subtitle mb-2 text-muted">
-            Ad Closing Date: {a.adclosingdate}
-            <hr></hr>
+            Ad Closing Date: {a.adclosingdate}{" "}
           </h6>
+          <h6 className="card-subtitle mb-2 text-muted">
+            Contract Start Date: {a.contractstartdate}{" "}
+          </h6>
+          <hr></hr>
           <br></br>
-          <p className="card-text">{a.adinfo.substring(0, 100)}...</p>
+          <p className="card-text">{a.adinfo}</p>
+          <hr></hr>
+          <h6 className="card-subtitle mb-2 text-muted">
+            Company: {companies.name}{" "}
+          </h6>
+          <h6 className="card-subtitle mb-2 text-muted">
+            Contact Name: {companies.contactname}{" "}
+          </h6>
+          <h6 className="card-subtitle mb-2 text-muted">
+            Contract Number: {companies.contactnum}{" "}
+          </h6>
+          <h6 className="card-subtitle mb-2 text-muted">
+            Contact Email: {companies.contactemail}{" "}
+          </h6>
           {/* <ModalDisplay a={props.a} businesses={props.businesses} /> */}
         </div>
       </div>
