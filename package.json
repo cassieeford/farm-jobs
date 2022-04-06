@@ -2,8 +2,14 @@
   "name": "full-stack-app",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "16.13.1"
+  },
   "scripts": {
-    "start": "node",
+    "start": "nodemon ./bin/www",
+    "build": "react-scripts build",
+    "dev": "concurrently \"node server.js\" \"npm start\" ",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "migrate": "node model/database.js"
   },
