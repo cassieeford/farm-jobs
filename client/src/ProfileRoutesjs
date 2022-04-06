@@ -1,0 +1,19 @@
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import ProfileDetails from "./ProfileDetails";
+import PostNewAdd from "./PostNewAdd";
+import MembersOnlyView from "./MembersOnlyView";
+
+function ProfileRoutes() {
+  return (
+    <div>
+      <Routes>
+        <Route path="/members" element={<MembersOnlyView />} />
+        {/* <Route path="/profiledetails" element={<ProfileDetails />} /> */}
+        {/* <Route path="/newadd" element={<PostNewAdd />} /> */}
+        {/* <Route path="/profiledetails" element={<ProfileDetails />} /> */}
+      </Routes>
+    </div>
+  );
+}
+export default ProfileRoutes;

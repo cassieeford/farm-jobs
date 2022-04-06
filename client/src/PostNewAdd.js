@@ -1,9 +1,11 @@
 import "./App.css";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function PostNewAdd(props) {
+  console.log("userId", props.user);
   const initialState = {
-    businessesId: 1,
+    businessesId: props.user.id,
     adtype: "", //"JOB", "CONTRACTOR", "LEASING"
     adtitle: "",
     adfield: "",
@@ -36,7 +38,11 @@ function PostNewAdd(props) {
     <div className="PostNewAdd">
       <form onSubmit={handleSubmit}>
         <h1>post a new job advertisement</h1>
-
+        <div className="linkback">
+          <h2>
+            <Link to={`/businesses/:id`}>Back to your profile</Link>
+          </h2>
+        </div>
         <div className="row mt-6">
           {/* <div className="offset-md-2 row mt-10"> */}
           <div className="offset-md-2 col-md-5">

@@ -42,6 +42,7 @@ class Api {
     let response;
     try {
       response = await fetch(url, options);
+      // console.log("response", response);
       if (response.ok) {
         response.data = await response.json();
       } else {
@@ -88,8 +89,10 @@ class Api {
     let url = `/businesses/${busId}`;
     let options = { method: "GET", headers: {} };
 
-    //add JWT if exists
-    //NEED CODE
+    let token = Local.getToken();
+    if (token) {
+      options.headers["Authorization"] = "Bearer " + token;
+    }
 
     let response;
     try {

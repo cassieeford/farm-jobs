@@ -14,6 +14,7 @@ function App() {
   // const [junctionTable, setJunctionTable] = useState([]);
   const [adds, setAdds] = useState([]);
   const [user, setUser] = useState(Local.getUser());
+  const [usersAdd, setUsersAdd] = useState([]);
   // const [user, setUser] = useState(Local.getUser());
   const [loginErrorMsg, setLoginErrorMsg] = useState("");
 
@@ -22,7 +23,7 @@ function App() {
   useEffect(() => {
     getBusinesses();
     getAdvertisements();
-    console.log("user", user);
+
     // getJunct();
   }, []);
 
@@ -30,18 +31,25 @@ function App() {
     let response = await Api.loginUser(email, pword);
     // console.log("DATA", response.data.businesses.email);
     // console.log("email", email, "password", pword);
+    console.log("responsenotok", response);
     if (response.ok) {
-      Local.saveUserInfo(response.data.token, response.data.businesses);
-      setUser(response.data.businesses);
+      console.log("responseok", response.data);
+      Local.saveUserInfo(response.data.token, response.data.user);
+      setUser(response.data.user);
       setLoginErrorMsg("");
-      navigate("/membersonly"); //used to navigate between sessions
+      // setUsersAdd(
+      //   adds.find((add) => add.businessesId === response.data.businesses.id)
+      // );
+      navigate("/"); //used to navigate between sessions
     } else {
       setLoginErrorMsg("Login failed");
     }
   }
+  console.log("usercheck", user);
 
   async function getBusinesses() {
     let response = await Api.getBus();
+    console.log("response.data", response);
     if (response.ok) {
       setBusinesses(response.data);
     } else {
@@ -114,7 +122,12 @@ function App() {
 
   return (
     <div className="App">
-      <h5 className="farm-jobs-header">Farm Jobs</h5>
+      <div className="logo">
+        <a>
+          <img className="windmill" src="images/windmill.png" alt="Logo" />
+        </a>
+        <h5 className="farm-jobs-header">Farm Jobs</h5>
+      </div>
       <BrowserRouter>
         <Navbar
           // userActive={userActive}
@@ -132,15 +145,11 @@ function App() {
           loginCb={(u, p) => doLogin(u, p)}
           loginError={loginErrorMsg}
           doLoginCb={doLogin}
+          user={user}
+          usersAdd={usersAdd}
         />
       </BrowserRouter>
       {/* {businesses} */}
-      <div className="row mb-3">
-        <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
-          Email
-        </label>
-        <div className="col-sm-10"></div>
-      </div>
     </div>
   );
 }

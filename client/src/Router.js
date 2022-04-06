@@ -5,15 +5,18 @@ import Jobs from "./Jobs";
 import Contractors from "./Contractors";
 import Leasing from "./Leasing";
 import SignUp from "./SignUp";
-import ProfileData from "./ProfileData";
+import ProfileDetails from "./ProfileDetails";
 import PostNewAdd from "./PostNewAdd";
 import NewLogin from "./NewLogin";
 import AuthenticatedRoute from "./AuthenticationRoute";
 import MembersOnlyView from "./MembersOnlyView";
 import UserProfile from "./UserProfile";
 import ProfileView from "./ProfileView";
+import MyAdds from "./MyAdds";
 
 function Router(props) {
+  let usersAdd = props.usersAdd;
+  console.log("useradd", usersAdd);
   return (
     <div className="Router">
       <Routes>
@@ -42,15 +45,32 @@ function Router(props) {
           element={<SignUp BusinessCb={props.BusinessCb} />}
         />
         {/* <AuthenticatedRoute> */}
-        <Route path="/userprofile/:id" element={<ProfileView />} />
-        {/* </AuthenticatedRoute> */}
-        {/* 
-        <AuthenticatedRoute path="/membersonly" element>
-          <MembersOnlyView />
-        </AuthenticatedRoute> */}
+        <Route
+          path="/businesses/:id"
+          element={<ProfileView user={props.user} />}
+        />
 
-        <Route path="/newadd" element={<PostNewAdd AddCb={props.AddCb} />} />
-        {/* <Route path="/userprofile/:id" element={<ProfileData />} /> */}
+        <Route
+          path="/profiledetails"
+          element={<ProfileDetails user={props.user} />}
+        />
+
+        <Route path="/members" element={<MembersOnlyView />} />
+        <Route
+          path="/newadd"
+          element={<PostNewAdd AddCb={props.AddCb} user={props.user} />}
+        />
+        <Route
+          path="/myadds"
+          element={
+            <MyAdds
+              user={props.user}
+              adds={props.adds}
+              usersAdd={props.usersAdd}
+            />
+          }
+        />
+        {/* <Route path="/newadd" element={<PostNewAdd user={props.user} />} /> */}
       </Routes>
     </div>
   );

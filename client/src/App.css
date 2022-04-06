@@ -71,15 +71,18 @@
 }
 
 .card-img {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .card-title-home {
   color: white;
   margin-top: 40%;
-  font-size: 50px;
+  font-size: 80px;
   stroke: 2px;
   opacity: 1px;
+  text-shadow: -3px -3px 0 grey, 1px -1px 0 grey, -1px 1px 0 grey,
+    1px 1px 0 grey;
+  font-family: "Khula", sans-serif;
 }
 .mail-list {
   margin-top: 20px;
@@ -88,12 +91,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Amatic+SC:wght@700&family=Architects+Daughter&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Amatic+SC:wght@700&family=Architects+Daughter&family=Khula:wght@300&display=swap");
 .farm-jobs-header {
-  text-shadow: -2px -2px 0 grey, 1px -1px 0 grey, -1px 1px 0 grey,
-    1px 1px 0 grey;
+  text-shadow: -3px -3px 0 grey, 2px -2px 0 grey, -3px 3px 0 grey,
+    3px 3px 0 grey;
   /* margin-left: 10px; */
   text-align: left;
   color: white;
-  font-size: 50px;
+  font-size: 100px;
   /* font-family: "Shadows Into Light"; */
   /* font-family: "Amatic SC"; */
   margin-top: 30px;
@@ -106,6 +109,7 @@
   /* font-family: "Amatic SC", cursive; */
   /* font-family: "Architects Daughter", cursive; */
   font-family: "Khula", sans-serif;
+  /* display: inline; */
 }
 
 .button {
@@ -124,4 +128,26 @@ h1 {
   /* font-family: "Shadows Into Light"; */
   font-family: "Khula", sans-serif;
   color: "#5b784f";
+}
+.windmill {
+  width: 100px;
+  margin-top: 30px;
+}
+.logo {
+  display: inline-block;
+}
+.emailinput {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+.profile-nav {
+  display: block;
+  /* width: 60px; */
+}
+h2 {
+  text-align: left;
+  margin-top: 10px;
+  font-family: "Khula", sans-serif;
+  color: #5b784f;
 }

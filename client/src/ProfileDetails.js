@@ -1,7 +1,8 @@
 import "./App.css";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function ProfileData(props) {
+function ProfileDetails(props) {
   const initialBusState = {
     name: "",
     companytext: "",
@@ -32,6 +33,11 @@ function ProfileData(props) {
 
   return (
     <div className="PostNewAdd">
+      <div className="linkback">
+        <h2>
+          <Link to={`/businesses/9`}>Back to your profile</Link>
+        </h2>
+      </div>
       <form onSubmit={handleSubmit}>
         <h1>Build your Farm Jobs Profile</h1>
 
@@ -232,4 +238,4 @@ function ProfileData(props) {
   );
 }
 
-export default ProfileData;
+export default ProfileDetails;

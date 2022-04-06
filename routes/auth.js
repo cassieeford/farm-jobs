@@ -58,10 +58,11 @@ router.post("/login", async (req, res, next) => {
         let token = jwt.sign(payload, SECRET_KEY);
         // Also return user (without password)
         delete businesses.pword;
+
         res.send({
           message: "Login succeeded",
           token: token,
-          businesses: businesses,
+          user: businesses,
         });
       } else {
         // Passwords don't match
@@ -124,25 +125,35 @@ router.post("/login", async (req, res, next) => {
 //   }
 // );
 
-router.get("/membersonly", ensureUserLoggedIn, function (req, res, next) {
-  res.send({ message: "Here is your Members Only content from the server..." });
-});
-
-router.get("/businesses/:id", ensureSameUser, async function (req, res, next) {
-  let { busId } = req.params;
-  let sql = `SELECT * FROM businesses WHERE id = ${busId}`;
-  try {
-    let results = await db(sql);
-    let businessSelected = results.data[0];
-    delete businessSelected.password; //do not return password
-    if (businessSelected.length === 0) {
-      res.status(404).send({ error: "business not found" });
-    } else {
-      res.send(businessSelected);
-    }
-  } catch (err) {
-    res.status(500).send({ error: err.message });
+router.get(
+  "/membersonly",
+  //ensureUserLoggedIn,
+  function (req, res, next) {
+    res.send({
+      message: "Here is your Members Only content from the server...",
+    });
   }
-});
+);
+
+router.get(
+  "/businesses/:id",
+  // ensureSameUser,
+  async function (req, res, next) {
+    let { busId } = req.params;
+    let sql = `SELECT * FROM businesses WHERE id = ${busId}`;
+    try {
+      let results = await db(sql);
+      let businessSelected = results.data[0];
+      delete businessSelected.password; //do not return password
+      if (businessSelected.length === 0) {
+        res.status(404).send({ error: "business not found" });
+      } else {
+        res.send(businessSelected);
+      }
+    } catch (err) {
+      res.status(500).send({ error: err.message });
+    }
+  }
+);
 
 module.exports = router;

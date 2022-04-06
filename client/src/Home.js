@@ -63,8 +63,8 @@ function Home() {
         </div>
       </div>
 
-      <form className="row mt-5 align-items-center">
-        <div className="col-8 align-items-center">
+      <form className="row mt-5 mb-10 align-items-center">
+        <div className="offset-md-4 mb-10 col-4 align-items-center">
           <label
             className="visually-hidden"
             htmlFor="inlineFormInputGroupUsername"

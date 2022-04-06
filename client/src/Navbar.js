@@ -30,15 +30,25 @@ function NavBar(props) {
             <div className="navbar-nav ml-auto">
               {props.user ? (
                 <div>
-                  <a className="nav-link active" href="/newadd">
+                  {/* <a className="nav-link active" href="/newadd">
                     Post New Add
-                  </a>
-                  <a className="nav-link active" href="/userprofile/:id">
+                  </a> */}
+                  <a
+                    className="nav-link active"
+                    href={`/businesses/${props.user.id}`}
+                  >
                     User Profile
                   </a>
-                  <a className="nav-link active" href="/membersonly">
+                  {/* <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    to={`/users/${props.user.id}`}
+                  >
+                    Profile ({props.user.username})
+                  </NavLink> */}
+                  {/* <a className="nav-link active" href="/membersonly">
                     Members Only
-                  </a>
+                  </a> */}
                   <a
                     className="nav-link active"
                     href="/"
