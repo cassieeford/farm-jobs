@@ -31,7 +31,7 @@ function SignUp(props) {
     let { name, value } = e.target;
     setNewSignUp((newSignUp) => ({ ...newSignUp, [name]: value }));
   }
-
+  console.log(newSignUp);
   return (
     <div className="PostNewAdd">
       <form onSubmit={handleSubmit}>

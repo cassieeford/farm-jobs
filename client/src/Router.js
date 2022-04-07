@@ -16,11 +16,12 @@ import MyAdds from "./MyAdds";
 
 function Router(props) {
   let usersAdd = props.usersAdd;
-  console.log("useradd", usersAdd);
+  console.log("useradinRouter", usersAdd);
   return (
     <div className="Router">
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route path="/contractors" element={<Contractors />} />
         <Route
           path="/jobs"
@@ -52,7 +53,12 @@ function Router(props) {
 
         <Route
           path="/profiledetails"
-          element={<ProfileDetails user={props.user} />}
+          element={
+            <ProfileDetails
+              user={props.user}
+              updateBusDataCb={props.updateBusDataCb}
+            />
+          }
         />
 
         <Route path="/members" element={<MembersOnlyView />} />

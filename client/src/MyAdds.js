@@ -22,21 +22,60 @@ function MyAdds(props) {
   //   let add = props.adds.filter((add) => add.businessesId === compid);
   //   setAdd(add);
   // }
-  let usersAdd = props.usersAdd;
-  console.log("useradd", usersAdd);
+
+  // let id = props.businesses.id;
+  // let filteredArray = props.adds.filter((i) =>
+  //   props.adds.includes(props.businesses.id)
+  // );
+
+  // console.log("adds", props.adds);
+  // let userId = usersAdd.filter((add) => add.bussinessId === id);
+
+  // console.log("useraddinMyAdd", props.businesses.id);
+  console.log("id", props.user.id);
+  console.log("adds", props.adds);
+  let data = props.adds.filter(
+    (add) => Number(add.businessesId) === Number(props.user.id)
+  );
+  console.log("data", data);
+  let a = data[0];
   return (
     <div className="MyAdds">
       <div className="linkback">
         <h2>
-          <Link to={`/businesses/9`}>Back to your profile</Link>
+          <Link to={`/businesses/:id`}>Back to your profile</Link>
         </h2>
       </div>
       <h1>My Advertisements</h1>
-      <h1>{usersAdd.adtitle}</h1>
-      {/* {addfilter(props.user.id)} */}
-      {/* {add.map((a) => {
-        <MyAddData a={a} key={a.id} />;
-      })} */}
+      {data.length === 0 ? (
+        <div>No Advertisements</div>
+      ) : (
+        <div className="offset-md-4 col-md-4">
+          <div className=" card mb-3" key={a.id}>
+            <div className="card-body">
+              <h5 className="card-title">{a.adtitle}</h5>
+              <hr></hr>
+              {/* <h6 className="card-subtitle mb-2">{a.joblocation}</h6> */}
+
+              <h6 className="card-subtitle mb-2 text-muted">{a.adfield}</h6>
+
+              <h6 className="card-subtitle mb-2 text-muted">
+                Contract Length: {a.contractlength}
+              </h6>
+              <h6 className="card-subtitle mb-2 text-muted">
+                Ad Closing Date: {a.adclosingdate}{" "}
+              </h6>
+              <h6 className="card-subtitle mb-2 text-muted">
+                Contract Start Date: {a.contractstartdate}{" "}
+              </h6>
+              <hr></hr>
+              <br></br>
+              <p className="card-text">{a.adinfo}</p>
+              <hr></hr>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div></div>
     </div>

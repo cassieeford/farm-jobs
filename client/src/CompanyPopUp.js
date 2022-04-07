@@ -15,7 +15,7 @@ function CompanyPopUp(props) {
         <div className="card-body">
           <h5 className="card-title">{a.adtitle}</h5>
           <hr></hr>
-          <h6 className="card-subtitle mb-2">{a.joblocation}</h6>
+          {/* <h6 className="card-subtitle mb-2">{a.joblocation}</h6> */}
 
           <h6 className="card-subtitle mb-2 text-muted">{a.adfield}</h6>
 

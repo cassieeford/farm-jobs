@@ -120,8 +120,6 @@ router.put("/businesses/:id", async function (req, res, next) {
   let {
     name,
     companytext,
-    email,
-    pword,
     companytype,
     contactname,
     contactnum,
@@ -129,7 +127,6 @@ router.put("/businesses/:id", async function (req, res, next) {
     streetadd,
     town,
     postcode,
-    ad_id,
     listascontractor,
   } = req.body;
 
@@ -139,7 +136,7 @@ router.put("/businesses/:id", async function (req, res, next) {
       res.status(400).send({ error: "business not Found" });
     } else {
       sql = `UPDATE businesses
-    SET name = '${name}', companytext='${companytext}', email= '${email}', pword='${pword}', companytype = '${companytype}', contactname= '${contactname}', contactnum= '${contactnum}', contactemail='${contactemail}', streetadd = '${streetadd}', town='${town}', postcode='${postcode}', ad_id=${ad_id}, listascontractor='${listascontractor}'
+    SET name = '${name}', companytext='${companytext}', companytype = '${companytype}', contactname= '${contactname}', contactnum= '${contactnum}', contactemail='${contactemail}', streetadd = '${streetadd}', town='${town}', postcode='${postcode}', listascontractor='${listascontractor}'
     WHERE id = ${busId}`;
       await db(sql);
       let result = await db("SELECT * FROM businesses");

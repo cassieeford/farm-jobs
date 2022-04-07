@@ -1,13 +1,17 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function NewLogin(props) {
   const loginError = props.loginError;
-
+  // const navigate = useNavigate();
   const initialLogState = {
     email: "",
     pword: "",
   };
+  // useEffect(() => {
+  //   loggedIn();
+  // }, []);
 
   // const [newLogin, setNewLogin] = useState(initialLogState);
   const [email, setEmail] = useState("");
@@ -32,12 +36,18 @@ function NewLogin(props) {
     e.preventDefault();
     console.log("email", email, "password", pword);
     props.loginCb(email, pword);
+    // loggedIn();
     // console.log("newBus", newLogin);
   }
 
   // function handleInputChange(e) {
   //   let { name, value } = e.target;
   //   setNewLogin((newLogin) => ({ ...newLogin, [name]: value }));
+  // }
+  // function loggedIn() {
+  //   if (props.userLoggedIn) {
+  //     navigate("/");
+  //   }
   // }
 
   return (

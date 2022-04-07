@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Router from "./Router";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
-
+// import { useNavigate } from "react-router";
 import Api from "./Helpers/Api";
 import Local from "./Helpers/Local";
 
@@ -17,13 +17,24 @@ function App() {
   const [usersAdd, setUsersAdd] = useState([]);
   // const [user, setUser] = useState(Local.getUser());
   const [loginErrorMsg, setLoginErrorMsg] = useState("");
+  const [userLoggedIn, setUserLoggedIn] = useState();
 
-  let navigate = useNavigate;
+  const navigate = useNavigate;
+  console.log(navigate);
+
+  function loggedin() {
+    if (Local.getUser.length != 0) {
+      setUserLoggedIn(true);
+    } else {
+      setUserLoggedIn(false);
+    }
+  }
+  console.log("userloggedin", userLoggedIn);
 
   useEffect(() => {
     getBusinesses();
     getAdvertisements();
-
+    loggedin();
     // getJunct();
   }, []);
 
@@ -35,12 +46,14 @@ function App() {
     if (response.ok) {
       console.log("responseok", response.data);
       Local.saveUserInfo(response.data.token, response.data.user);
+      navigate("/");
       setUser(response.data.user);
       setLoginErrorMsg("");
+      setUserLoggedIn(true);
       // setUsersAdd(
       //   adds.find((add) => add.businessesId === response.data.businesses.id)
       // );
-      navigate("/"); //used to navigate between sessions
+      //navigate("/businesses/:id"); //used to navigate between sessions
     } else {
       setLoginErrorMsg("Login failed");
     }
@@ -93,7 +106,7 @@ function App() {
       body: JSON.stringify(newBus),
     };
     try {
-      let response = await fetch("/businesses", options);
+      let response = await ("/businesses", options);
       if (response.ok) {
         let data = await response.json();
         setAdds(data);
@@ -109,6 +122,7 @@ function App() {
     Local.removeUserInfo();
     setUser(null);
     navigate("/");
+    setUserLoggedIn(false);
   }
 
   // function userLoggedIn(user) {
@@ -119,14 +133,15 @@ function App() {
   //   setUserActive(user);
   //   console.log("userpasslogout", user);
   // }
-
+  function updateBusDataCb() {}
   return (
     <div className="App">
       <div className="logo">
         <a>
-          <img className="windmill" src="images/windmill.png" alt="Logo" />
+          <img className="windmill" src="images/windmill.png" />
         </a>
         <h5 className="farm-jobs-header">Farm Jobs</h5>
+        <h4>Connecting Producers and Employees</h4>
       </div>
       <BrowserRouter>
         <Navbar
@@ -147,6 +162,8 @@ function App() {
           doLoginCb={doLogin}
           user={user}
           usersAdd={usersAdd}
+          updateBusDataCb={updateBusDataCb}
+          userLoggedIn={userLoggedIn}
         />
       </BrowserRouter>
       {/* {businesses} */}

@@ -27,12 +27,6 @@ function ProfileNavbar() {
                 Post a New Advertisement{" "}
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                {" "}
-                Blogs{" "}
-              </a>
-            </li>
           </ul>
         </nav>
       </div>

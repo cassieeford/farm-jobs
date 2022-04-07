@@ -13,7 +13,6 @@ function ProfileDetails(props) {
     streetadd: "",
     town: "",
     postcode: "",
-    ad_id: "",
     listascontractor: "",
   };
 
@@ -21,7 +20,7 @@ function ProfileDetails(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.BusinessCb(newBus);
+    props.updateBusDataCb(newBus);
     // setNewAdd(initialState);
     console.log("newBus", newBus);
   }
@@ -35,11 +34,11 @@ function ProfileDetails(props) {
     <div className="PostNewAdd">
       <div className="linkback">
         <h2>
-          <Link to={`/businesses/9`}>Back to your profile</Link>
+          <Link to={`/businesses/:id`}>Back to your profile</Link>
         </h2>
       </div>
       <form onSubmit={handleSubmit}>
-        <h1>Build your Farm Jobs Profile</h1>
+        <h1>Your Farm Jobs Profile</h1>
 
         <div className="row mt-6">
           {/* <div className="offset-md-2 row mt-10"> */}
@@ -141,7 +140,7 @@ function ProfileDetails(props) {
               className="form-control"
               id="contactemail"
               aria-describedby="contactemail"
-              name="offset-md-2 contactemail"
+              name="contactemail"
               value={newBus.contactemail}
               style={{ cursor: "pointer" }}
               onChange={(e) => handleInputChange(e)}

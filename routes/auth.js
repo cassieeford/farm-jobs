@@ -8,6 +8,7 @@ const { ensureSameUser } = require("../middleware/guards");
 const { ensureUserLoggedIn } = require("../middleware/guards");
 
 //Post a new Business to the Data Base with encrypted password
+//SIGN UP TO DATABASE
 router.post("/businesses", async function (req, res, next) {
   let {
     name,
@@ -50,6 +51,7 @@ router.post("/login", async (req, res, next) => {
       res.status(401).send({ error: "User not found" });
     } else {
       let businesses = results.data[0]; // the user's row/record from the DB
+      //compare database password to hashed password created by bcrypt
       let passwordsEqual = await bcrypt.compare(pword, businesses.pword);
       if (passwordsEqual) {
         // Passwords match
@@ -139,7 +141,7 @@ router.get(
   "/businesses/:id",
   // ensureSameUser,
   async function (req, res, next) {
-    let { busId } = req.params;
+    let busId = req.params.id;
     let sql = `SELECT * FROM businesses WHERE id = ${busId}`;
     try {
       let results = await db(sql);

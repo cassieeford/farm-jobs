@@ -57,10 +57,12 @@ class Api {
   //get businesses from mySql database
   static async getBus() {
     let response;
+    console.log("API.GetBus response", response);
     try {
       response = await fetch("./businesses");
       if (response.ok) {
         response.data = await response.json();
+        console.log("API.GetBus response OK", response.data);
       } else {
         response.error = `Error ${response.status}: ${response.statusText}`;
       }

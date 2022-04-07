@@ -6,6 +6,9 @@ function Home() {
       <div className="home-image-container">
         <img className="home-image" src="images/wheat-field.jpg" alt="image" />
         {/* <div className="image-text">Farm Jobs</div> */}
+        {/* <div className="card-img-overlay">
+          <p className="card-title-home">Connecting Producers with Employees</p>
+        </div> */}
       </div>
 
       <div className="card text-center">

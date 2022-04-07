@@ -1,17 +1,28 @@
 import "./App.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+// import AddressToMarkerDemo from "./AddressToMarker";
+import { geocode } from "./Helpers/geo-opencage";
+import React, { useState } from "react";
 
-function Map() {
+function Map(props) {
   // var map = L.map("map").setView([51.505, -0.09], 13);
+
+  // const [places, setPlaces] = useState([]);
+
+  // let joblocation = props.adds.joblocation;
+
+  function toArray(joblocation) {
+    let nums = joblocation.split(", ");
+    return [Number(nums[0]), Number(nums[1])];
+  }
 
   return (
     <div className="Map">
-      <p>TODO - popup to pull geolocation of address for producer</p>
       <div id="map">
         <MapContainer
           className="MapContainer"
-          center={[-36.947398732708315, 143.9140506060621]}
-          zoom={10}
+          center={[-36.980623204677, 144.25703850640292]}
+          zoom={12}
           scrollWheelZoom={true}
         >
           <TileLayer
@@ -19,12 +30,13 @@ function Map() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          <Marker position={[-37.302092, 144.456268]}>
-            {" "}
-            <Popup>
-              // A pretty CSS3 popup. <br /> Easily customizable. //{" "}
-            </Popup>{" "}
-          </Marker>
+          {props.adds.map((a) => (
+            <Marker key={a.id} position={toArray(a.joblocation)}>
+              <Popup>
+                <h4>{a.adtitle}</h4>
+              </Popup>
+            </Marker>
+          ))}
         </MapContainer>
       </div>
     </div>
